@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-canvas: #f5ede3;
+  --color-grain: #e8d9c8;
+  --color-sand: #efe3d4;
+  --color-hair: #dfd1c1;
+  --color-ink: #1d1446;
+  --color-indigo: #2b1478;
+  --color-sky: #0095eb;
+  --color-espresso: #3b2e26;
+  --color-walnut: #6b5b50;
+  --color-walnut-dark: #4a3c33;
+  --color-terra: #c85a17;
+  --color-terra-dark: #a6460d;
+  --color-cream: #f8f2eb;
+  --color-border-walnut: #6e4730;
+  --color-btn-walnut: #4a2e1d;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-rain: rain 0.7s linear infinite;
+  --animate-shimmer: shimmer 3.2s ease-in-out infinite;
+  --animate-spin-slow: spin 22s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes rain {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -40px 220px;
+    }
+  }
+  @keyframes shimmer {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 0.85;
+      transform: translateY(4px);
+    }
+  }
+}
+
+@layer base {
+  html {
+    background: var(--color-canvas);
+    -webkit-tap-highlight-color: transparent;
+  }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-espresso);
+    background: var(--color-canvas);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    letter-spacing: -0.025em;
+  }
+  ::selection {
+    background: var(--color-terra);
+    color: #fff;
+  }
+  section[id] {
+    scroll-margin-top: 76px;
+  }
+}
+
+/* Organic birch wood-grain texture overlay */
+.wood-grain {
+  position: relative;
+  isolation: isolate;
+}
+.wood-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.18;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0035 0.06' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.42 0 0 0 0 0.3 0 0 0 1.6 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 900px 900px;
+  mix-blend-mode: multiply;
+}
+
+.rain-streaks {
+  background-image: repeating-linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0) 0 7px,
+    rgba(255, 255, 255, 0.16) 7px 8px,
+    rgba(255, 255, 255, 0) 8px 22px
+  );
+  background-size: 120px 220px;
+}
+
+.droplets {
+  background-image:
+    radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.75) 0 2px, transparent 3px),
+    radial-gradient(circle at 64% 30%, rgba(255, 255, 255, 0.7) 0 3px, transparent 4px),
+    radial-gradient(circle at 38% 52%, rgba(255, 255, 255, 0.6) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 66%, rgba(255, 255, 255, 0.75) 0 3.5px, transparent 4.5px),
+    radial-gradient(circle at 26% 80%, rgba(255, 255, 255, 0.65) 0 2.5px, transparent 3.5px),
+    radial-gradient(circle at 56% 88%, rgba(255, 255, 255, 0.6) 0 2px, transparent 3px),
+    radial-gradient(circle at 86% 12%, rgba(255, 255, 255, 0.6) 0 2px, transparent 3px);
+  background-size: 140px 160px;
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.45);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Logo/client marquees are intentional brand content and keep scrolling. */
+  *:not(.animate-marquee),
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "description": "Explore wholesale fiber and panel boards, compare products and sizes, and request bulk pricing directly on WhatsApp from Rameshwer Enterprises in New Delhi.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
