@@ -53,11 +53,11 @@ function Select({
 
 function Detail({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
   return (
-    <div className="flex gap-4">
+    <div className="flex min-w-0 gap-3 sm:gap-4">
       <span className="border-hair text-terra grid size-11 shrink-0 place-items-center rounded-full border bg-cream">{icon}</span>
-      <div>
+      <div className="min-w-0">
         <div className="text-walnut text-[11px] font-semibold tracking-[0.18em] uppercase">{label}</div>
-        <div className="font-display text-ink mt-1 text-[16px] font-bold">{children}</div>
+        <div className="font-display text-ink mt-1 text-[15px] font-bold break-words [overflow-wrap:anywhere] sm:text-[16px]">{children}</div>
       </div>
     </div>
   )
@@ -134,7 +134,7 @@ export function Contact() {
           </motion.div>
 
           {/* Company details */}
-          <div className="mt-16 grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
+          <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -153,7 +153,7 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1, ease }}
-              className="border-hair grid gap-7 rounded-2xl border bg-cream/70 p-7 sm:grid-cols-2 sm:p-9"
+              className="border-hair grid min-w-0 gap-6 rounded-2xl border bg-cream/70 p-5 sm:grid-cols-2 sm:gap-7 sm:p-9"
             >
               <Detail icon={<User size={20} />} label="Rameshwer Enterprises">
                 Prop. Ramesh Kedia
