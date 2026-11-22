@@ -169,6 +169,16 @@ export function Products() {
     return () => clearInterval(t)
   }, [inView, focus])
 
+  // Touch: tapping outside the grid closes an open card.
+  useEffect(() => {
+    if (focus === null) return
+    const close = (e: PointerEvent) => {
+      if (e.pointerType !== 'mouse' && !gridRef.current?.contains(e.target as Node)) setFocus(null)
+    }
+    document.addEventListener('pointerdown', close)
+    return () => document.removeEventListener('pointerdown', close)
+  }, [focus])
+
   const filters: Filter[] = ['All Sizes', ...SIZES]
 
   return (
@@ -247,7 +257,7 @@ export function Products() {
         <div
           ref={gridRef}
           className="border-hair relative mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border bg-[#DFD1C1] shadow-[0_40px_80px_-40px_rgba(59,46,38,0.5)] lg:grid-cols-3"
-          onPointerLeave={() => setFocus(null)}
+          onPointerLeave={(e) => e.pointerType === 'mouse' && setFocus(null)}
         >
           {PRODUCTS.map((p, i) => (
             <Tile
