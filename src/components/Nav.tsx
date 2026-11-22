@@ -132,7 +132,7 @@ export function Nav() {
                   }`}
                 >
                   {n.label}
-                  <span className="text-walnut text-xs font-medium">0{i + 1}</span>
+                  
                 </motion.a>
               ))}
               <a
