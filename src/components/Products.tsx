@@ -33,10 +33,10 @@ function Tile({
       transition={{ duration: 0.8, delay: (i % 3) * 0.08 + Math.floor(i / 3) * 0.12, ease }}
       onPointerEnter={(e) => e.pointerType === 'mouse' && onEnter()}
       onPointerLeave={(e) => e.pointerType === 'mouse' && onLeave()}
-      onPointerUp={(e) => e.pointerType !== 'mouse' && onTap()}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
+      onPointerUp={(e) => {
+        if (e.pointerType === 'mouse' && e.button === 0) {
+          window.location.hash = `#/products/${p.id}`
+        } else if (e.pointerType !== 'mouse') {
           onTap()
         }
       }}
