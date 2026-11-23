@@ -1,17 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useInView } from 'motion/react'
-import { PRODUCTS, SIZES, type Product, type Size } from '@/lib/site'
+import { PRODUCTS, type Product } from '@/lib/site'
 import { ArrowRight } from './Icons'
 
 const ease = [0.22, 1, 0.36, 1] as const
-type Filter = 'All Sizes' | Size
 
 function Tile({
   p,
   i,
   revealed,
   focused,
-  size,
   onEnter,
   onLeave,
   onTap,
@@ -20,7 +18,6 @@ function Tile({
   i: number
   revealed: boolean
   focused: boolean
-  size: Filter
   onEnter: () => void
   onLeave: () => void
   onTap: () => void
@@ -37,6 +34,12 @@ function Tile({
         if (e.pointerType === 'mouse' && e.button === 0) {
           window.location.hash = `#/products/${p.id}`
         } else if (e.pointerType !== 'mouse') {
+          onTap()
+        }
+      }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
           onTap()
         }
       }}
@@ -115,19 +118,6 @@ function Tile({
               {p.items.slice(0, 3).map((it) => it.split(' – ')[0]).join(' · ')}
               {p.items.length > 3 && ` +${p.items.length - 3} more`}
             </p>
-            <div className="mt-2 grid grid-cols-3 gap-1">
-              {SIZES.map((s) => (
-                <span
-                  key={s}
-                  className={`rounded-md border py-[3px] text-center text-[10px] font-semibold whitespace-nowrap sm:text-[11px] ${
-                    size === s ? 'border-white bg-white text-ink [text-shadow:none]' : 'border-white/30 text-white'
-                  }`}
-                >
-                  {s.replace(' ft', '').replace(/ /g, '')}
-                  <span className="hidden sm:inline"> ft</span>
-                </span>
-              ))}
-            </div>
             <a
               href={`#/products/${p.id}`}
               onPointerUp={(e) => e.stopPropagation()}
@@ -151,7 +141,6 @@ function Tile({
 }
 
 export function Products() {
-  const [size, setSize] = useState<Filter>('All Sizes')
   const [spot, setSpot] = useState(0)
   const [focus, setFocus] = useState<number | null>(null)
   const gridRef = useRef<HTMLDivElement>(null)
@@ -179,8 +168,6 @@ export function Products() {
     return () => document.removeEventListener('pointerdown', close)
   }, [focus])
 
-  const filters: Filter[] = ['All Sizes', ...SIZES]
-
   return (
     <section id="products" className="wood-grain relative py-20 sm:py-28">
       <div className="mx-auto max-w-[1320px] px-5 sm:px-8">
@@ -203,48 +190,16 @@ export function Products() {
             transition={{ duration: 0.8, delay: 0.1, ease }}
           >
             <p className="text-walnut text-[16px] leading-relaxed sm:text-[17px]">
-              Hover or tap any board texture to preview its real-world architectural application, check available sheet
-              sizes, and request instant wholesale pricing.
+              Hover or tap any board texture to preview its real-world architectural application, explore the full
+              category, and request instant wholesale pricing.
             </p>
-            <div role="radiogroup" aria-label="Filter by sheet size" className="no-scrollbar mt-5 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
-              {filters.map((f) => (
-                <button
-                  key={f}
-                  role="radio"
-                  aria-checked={size === f}
-                  onClick={() => setSize(f)}
-                  className={`font-display relative h-10 shrink-0 rounded-full border px-4 text-[13.5px] font-bold transition-colors ${
-                    size === f ? 'border-ink text-white' : 'border-hair text-ink bg-cream hover:border-ink/40'
-                  }`}
-                >
-                  {size === f && (
-                    <motion.span
-                      layoutId="size-pill"
-                      className="bg-ink absolute inset-0 rounded-full"
-                      transition={{ type: 'spring', stiffness: 400, damping: 34 }}
-                    />
-                  )}
-                  <span className="relative">{f}</span>
-                </button>
-              ))}
-            </div>
           </motion.div>
         </div>
 
         <div className="mt-6 flex items-center justify-between text-[13px] text-walnut">
-          <AnimatePresence mode="wait">
-            <motion.p key={size} initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 6 }}>
-              {size === 'All Sizes' ? (
-                <>
-                  All {PRODUCTS.length} categories in ready stock across <b className="text-ink">8×4, 8×6 & 10×4 ft</b>
-                </>
-              ) : (
-                <>
-                  Showing all {PRODUCTS.length} categories in <b className="text-ink">{size}</b> - inquiries will be pre-filled with this size
-                </>
-              )}
-            </motion.p>
-          </AnimatePresence>
+          <p>
+            All {PRODUCTS.length} categories available in <b className="text-ink">all sizes & thicknesses</b>
+          </p>
           <span className="hidden items-center gap-2 sm:flex">
             <span className="relative flex size-2">
               <span className="bg-terra absolute inline-flex size-full animate-ping rounded-full opacity-60" />
@@ -264,7 +219,6 @@ export function Products() {
               key={p.id}
               p={p}
               i={i}
-              size={size}
               focused={focus === i}
               revealed={focus === null ? spot === i : focus === i}
               onEnter={() => setFocus(i)}
@@ -272,7 +226,6 @@ export function Products() {
               onTap={() => setFocus((f) => (f === i ? null : i))}
             />
           ))}
-
         </div>
         <div className="mt-8 flex justify-center">
           <a
