@@ -129,7 +129,7 @@ function Category({ p, i }: { p: Product; i: number }) {
               ))}
             </ul>
             <p className="text-walnut mt-3 text-[13.5px]">
-              {p.note ? `${p.note} · ` : ''}And more — ask us for the complete list.
+              {p.note ? `${p.note} · ` : ''}And more - ask us for the complete list.
             </p>
           </div>
 
@@ -184,7 +184,7 @@ export function ProductsPage({ focus }: { focus?: string }) {
               transition={{ duration: 0.8, delay: 0.05, ease }}
               className="mt-3 max-w-4xl text-[38px] leading-[1.03] font-extrabold tracking-[-0.03em] sm:text-[58px]"
             >
-              Every board, laminate & veneer — under one roof.
+              Every board, laminate & veneer - under one roof.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
