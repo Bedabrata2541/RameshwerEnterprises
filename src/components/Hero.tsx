@@ -6,7 +6,7 @@ import { MSG, wa } from '@/lib/site'
 import { useScrollTo } from '@/lib/smooth'
 import { Counter } from './Counter'
 import { OutlineButton, WaButton } from './Buttons'
-import { ArrowDown, Badge, MapPin, Ruler } from './Icons'
+import { ArrowDown } from './Icons'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -26,12 +26,12 @@ function Card({
   caption?: string
 }) {
   return (
-    <div className={className}>
+    <div className={`relative min-h-0 ${className}`}>
     <motion.figure
       initial={{ opacity: 0, y: 60, scale: 0.94 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 1.1, delay, ease }}
-      className="group relative size-full overflow-hidden rounded-2xl shadow-[0_30px_60px_-30px_rgba(59,46,38,0.55)]"
+      className="group absolute inset-0 overflow-hidden rounded-2xl shadow-[0_30px_60px_-30px_rgba(59,46,38,0.55)]"
     >
       <motion.img
         src={src}
@@ -39,7 +39,7 @@ function Card({
         initial={{ scale: 1.18 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.8, delay, ease }}
-        className="size-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.06]"
+        className="absolute inset-0 size-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.06]"
       />
       {caption && (
         <figcaption className="absolute bottom-3 left-3 rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold tracking-wide text-espresso backdrop-blur-sm">
@@ -58,8 +58,8 @@ export function Hero() {
     <section id="home" className="wood-grain relative overflow-hidden pt-[72px]">
       {/* soft warm light */}
       <div className="pointer-events-none absolute -top-40 -left-40 size-[640px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.7),transparent_65%)]" />
-      <div className="mx-auto grid max-w-[1320px] items-center gap-12 px-5 pt-10 pb-16 sm:px-8 lg:min-h-[calc(100svh-72px)] lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:pt-6 lg:pb-14">
-        <div className="relative z-10">
+      <div className="mx-auto grid max-w-[1320px] gap-10 px-5 pt-8 pb-12 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:items-stretch lg:gap-12 lg:py-12">
+        <div className="relative z-10 flex flex-col justify-center lg:py-4">
           <h1 className="text-[40px] leading-[1.02] font-extrabold tracking-[-0.035em] sm:text-[56px] lg:text-[60px] xl:text-[68px]">
             {HEADLINE.map((w, i) => (
               <span key={i} className="inline-block overflow-hidden pb-1 align-bottom">
@@ -99,53 +99,37 @@ export function Hero() {
             </OutlineButton>
           </motion.div>
 
-          <motion.ul
+          {/* Key numbers */}
+          <motion.dl
             initial="hidden"
             animate="show"
-            variants={{ show: { transition: { staggerChildren: 0.1, delayChildren: 1.05 } } }}
-            className="border-hair mt-10 flex flex-wrap gap-x-6 gap-y-3 border-t pt-6 text-[13.5px] font-medium text-walnut"
+            variants={{ show: { transition: { staggerChildren: 0.12, delayChildren: 1.0 } } }}
+            className="border-hair mt-10 grid max-w-[560px] grid-cols-3 border-t pt-7"
           >
             {[
-              { i: <Badge size={18} />, t: '15+ Years Expertise' },
-              { i: <Ruler size={18} />, t: 'Ready Stock: 8×4, 8×6, 10×4 ft' },
-              { i: <MapPin size={18} />, t: 'Nangloi, New Delhi' },
-            ].map((x) => (
-              <motion.li
-                key={x.t}
-                variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
-                className="flex items-center gap-2"
+              { to: 30, s: '+', l: 'Years of trusted supply' },
+              { to: 50, s: '+', l: 'Product categories' },
+              { to: 7, s: '+', l: 'Authorized brands' },
+            ].map((x, i) => (
+              <motion.div
+                key={x.l}
+                variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+                className={i > 0 ? 'border-hair border-l pl-4 sm:pl-6' : 'pr-4'}
               >
-                <span className="text-terra">{x.i}</span>
-                {x.t}
-              </motion.li>
+                <dt className="font-display text-ink text-[34px] leading-none font-extrabold tracking-tight sm:text-[44px]">
+                  <Counter to={x.to} suffix={x.s} delay={1.1 + i * 0.15} />
+                </dt>
+                <dd className="text-walnut mt-2 text-[12.5px] leading-snug font-medium sm:text-[13.5px]">{x.l}</dd>
+              </motion.div>
             ))}
-          </motion.ul>
+          </motion.dl>
         </div>
 
         {/* Aligned 2-column image grid: equal tops and bottoms */}
-        <div className="grid h-[480px] grid-cols-2 grid-rows-2 gap-4 sm:h-[600px] lg:h-[min(640px,calc(100svh-150px))]">
+        <div className="grid h-[460px] grid-cols-2 grid-rows-2 gap-4 sm:h-[580px] lg:h-auto lg:min-h-[520px]">
           <Card src={prelam} alt="Fanned stack of prelaminated boards" className="col-start-1 row-start-1" delay={0.25} caption="Prelaminated Decors" />
           <Card src={cnc} alt="CNC-carved ornamental MDF panel on router bed" className="col-start-1 row-start-2" delay={0.45} caption="CNC-Ready MDF" />
-          <div className="relative col-start-2 row-span-2 row-start-1">
-            <Card src={living} alt="Luxury wood-paneled living room interior" className="size-full" delay={0.35} />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9, ease }}
-              className="border-hair absolute inset-x-3 bottom-3 rounded-xl border bg-cream/95 p-4 shadow-xl backdrop-blur sm:inset-x-4 sm:bottom-4"
-            >
-              <div className="flex items-end justify-between gap-3">
-                <div>
-                  <div className="font-display text-ink text-3xl leading-none font-extrabold sm:text-4xl"><Counter to={15} suffix="+" delay={1} /></div>
-                  <div className="text-walnut mt-1 text-[12px] font-medium sm:text-[12.5px]">Years as distributor & wholesaler</div>
-                </div>
-                <div className="hidden text-right sm:block">
-                  <div className="text-walnut text-[10px] font-semibold tracking-[0.18em] uppercase">Ready Stock</div>
-                  <div className="font-display text-ink mt-0.5 text-sm font-bold">8×4 · 8×6 · 10×4 ft</div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+          <Card src={living} alt="Luxury wood-paneled living room interior" className="col-start-2 row-span-2 row-start-1" delay={0.35} caption="Finished Interiors" />
         </div>
       </div>
     </section>
