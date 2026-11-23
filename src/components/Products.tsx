@@ -240,7 +240,7 @@ export function Products() {
                 </>
               ) : (
                 <>
-                  Showing all {PRODUCTS.length} categories in <b className="text-ink">{size}</b> — inquiries will be pre-filled with this size
+                  Showing all {PRODUCTS.length} categories in <b className="text-ink">{size}</b> - inquiries will be pre-filled with this size
                 </>
               )}
             </motion.p>
