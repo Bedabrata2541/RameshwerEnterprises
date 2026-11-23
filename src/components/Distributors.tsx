@@ -10,11 +10,11 @@ type Brand = { name: string; src: string; className: string; label?: string }
 
 // Heights are tuned per logo so each mark reads at a similar visual weight.
 const BRANDS: Brand[] = [
-  { name: 'Greenpanel', src: greenpanel, className: 'h-8 sm:h-9' },
+  { name: 'Greenpanel', src: greenpanel, className: 'h-10 sm:h-12' },
   { name: 'Action Tesa', src: actionTesa, className: 'h-10 sm:h-12' },
   { name: 'Centuryply', src: centuryply, className: 'h-10 sm:h-12' },
-  { name: 'Greenply', src: greenply, className: 'h-12 sm:h-14' },
-  { name: 'Crossbond', src: crossbond, className: 'h-12 sm:h-14' },
+  { name: 'Greenply', src: greenply, className: 'h-10 sm:h-12' },
+  { name: 'Crossbond', src: crossbond, className: 'h-8 sm:h-9' },
   { name: 'Bhutan Tuff', src: bhutanTuff, className: 'h-10 sm:h-12', label: 'BHUTAN TUFF' },
   { name: 'Archidply', src: archidply, className: 'h-9 sm:h-11 rounded-[3px]' },
 ]
