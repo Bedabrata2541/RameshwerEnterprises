@@ -6,7 +6,6 @@ import {
   PHONE_E164,
   PRODUCTS,
   QUANTITIES,
-  SIZES,
   WEBSITE,
   wa,
 } from '@/lib/site'
@@ -66,7 +65,7 @@ function Detail({ icon, label, children }: { icon: ReactNode; label: string; chi
 export function Contact() {
   const boardNames = PRODUCTS.map((p) => p.name)
   const [board, setBoard] = useState(boardNames[0])
-  const [size, setSize] = useState<string>(SIZES[0])
+  const [size, setSize] = useState('')
   const [qty, setQty] = useState<string>(QUANTITIES[0])
 
   const message = [
@@ -74,7 +73,7 @@ export function Contact() {
     '',
     'I would like a wholesale quotation for:',
     `• Board Type: ${board}`,
-    `• Sheet Size: ${size}`,
+    `• Sheet Size: ${size.trim() || 'To be discussed'}`,
     `• Estimated Quantity: ${qty}`,
     '',
     'Please share your best trade rates and stock availability. Thank you.',
@@ -111,7 +110,17 @@ export function Contact() {
               <div className="flex flex-col justify-center gap-6">
                 <div className="grid gap-4 sm:grid-cols-3">
                   <Select id="q-board" label="Board Type" value={board} onChange={setBoard} options={boardNames} />
-                  <Select id="q-size" label="Sheet Size" value={size} onChange={setSize} options={SIZES} />
+                  <label htmlFor="q-size" className="flex flex-col gap-2">
+                    <span className="text-[11px] font-semibold tracking-[0.18em] text-white/60 uppercase">Sheet Size</span>
+                    <input
+                      id="q-size"
+                      value={size}
+                      onChange={(e) => setSize(e.target.value)}
+                      placeholder="e.g. 8×4 ft, 18 mm"
+                      maxLength={60}
+                      className="font-display focus:border-terra h-14 w-full rounded-xl border border-white/15 bg-white/[0.06] px-4 text-[15px] font-semibold text-white transition-colors outline-none placeholder:font-medium placeholder:text-white/40 hover:border-white/30"
+                    />
+                  </label>
                   <Select id="q-qty" label="Estimated Quantity" value={qty} onChange={setQty} options={QUANTITIES} />
                 </div>
 
