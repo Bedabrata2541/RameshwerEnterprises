@@ -73,12 +73,7 @@ export function Nav() {
                 />
               )}
               {n.label}
-              {active === n.id && (
-                <motion.span
-                  layoutId="nav-dot"
-                  className="bg-terra absolute -bottom-[3px] left-1/2 size-1 -translate-x-1/2 rounded-full"
-                />
-              )}
+              
             </a>
           ))}
         </nav>
