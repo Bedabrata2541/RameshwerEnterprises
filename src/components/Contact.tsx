@@ -94,7 +94,7 @@ export function Contact() {
           >
             <div className="bg-sky/25 pointer-events-none absolute -top-40 -right-32 size-[420px] rounded-full blur-[100px]" />
             <div className="bg-terra/25 pointer-events-none absolute -bottom-48 -left-24 size-[420px] rounded-full blur-[110px]" />
-            <div className="relative grid gap-10 lg:grid-cols-[1fr_1.35fr] lg:gap-14">
+            <div className="relative grid gap-10 lg:grid-cols-[1fr_1.35fr] lg:items-center lg:gap-14">
               <div>
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
                   <span className="size-1.5 rounded-full bg-[#25D366]" /> Instant WhatsApp Quote
@@ -108,23 +108,18 @@ export function Contact() {
                 </p>
               </div>
 
-              <div>
+              <div className="flex flex-col justify-center gap-6">
                 <div className="grid gap-4 sm:grid-cols-3">
                   <Select id="q-board" label="Board Type" value={board} onChange={setBoard} options={boardNames} />
                   <Select id="q-size" label="Sheet Size" value={size} onChange={setSize} options={SIZES} />
                   <Select id="q-qty" label="Estimated Quantity" value={qty} onChange={setQty} options={QUANTITIES} />
                 </div>
 
-                <div className="mt-5 rounded-xl border border-white/10 bg-black/20 p-4">
-                  <div className="text-[10.5px] font-semibold tracking-[0.2em] text-white/50 uppercase">Message preview</div>
-                  <pre className="mt-2 font-sans text-[13.5px] leading-relaxed whitespace-pre-wrap text-white/85">{message}</pre>
-                </div>
-
                 <a
                   href={wa(message)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-terra hover:bg-terra-dark font-display mt-5 flex h-14 w-full items-center justify-center gap-2.5 rounded-xl px-5 text-[15px] font-bold text-white shadow-[0_14px_30px_-12px_rgba(200,90,23,0.9)] transition-all hover:-translate-y-0.5 sm:text-base"
+                  className="bg-terra hover:bg-terra-dark font-display flex h-14 w-full items-center justify-center gap-2.5 rounded-xl px-5 text-[15px] font-bold text-white shadow-[0_14px_30px_-12px_rgba(200,90,23,0.9)] transition-all hover:-translate-y-0.5 sm:text-base"
                 >
                   <WhatsAppIcon size={19} />
                   Send Wholesale Inquiry on WhatsApp
