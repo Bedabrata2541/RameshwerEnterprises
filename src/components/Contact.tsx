@@ -11,6 +11,7 @@ import {
 } from '@/lib/site'
 import { Callback } from './Callback'
 import { Footer } from './Footer'
+import bniLogo from '@/assets/img/image.png'
 import { Chevron, Globe, MapPin, Phone, User, WhatsAppIcon } from './Icons'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -147,10 +148,12 @@ export function Contact() {
             >
               <span className="text-terra text-[12px] font-bold tracking-[0.2em] uppercase">Contact & Showroom</span>
               <h2 className="mt-3 text-[32px] leading-[1.05] font-extrabold sm:text-[44px]">Visit our outlet or message us directly.</h2>
-              <div className="border-hair bg-sand mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[13px] font-semibold text-walnut">
-                <span className="bg-ink grid size-6 place-items-center rounded-full text-[9px] font-black text-white">BNI</span>
-                Proud BNI Member
-              </div>
+              <img
+                src={bniLogo}
+                alt="Proud BNI Member"
+                draggable={false}
+                className="mt-6 h-12 w-auto select-none sm:h-14"
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
