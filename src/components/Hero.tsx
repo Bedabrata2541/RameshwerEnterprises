@@ -82,8 +82,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.7, ease }}
             className="text-espresso mt-6 max-w-[560px] text-[17px] leading-relaxed sm:text-lg"
           >
-            A comprehensive range of Plywood, high-density MDF, HDMR, Prelaminated, Boilo, Particle, and Finger Joint Rubber
-            Boards, premium Laminates and Veneers for architects, interior designers, builders, and manufacturers.
+            50+ varieties of plywood, engineered boards, and surface finishes - stocked in all standard sizes and
+            thicknesses for residential, commercial, and turnkey projects.
           </motion.p>
 
           <motion.div
