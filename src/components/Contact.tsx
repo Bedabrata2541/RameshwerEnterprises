@@ -6,7 +6,6 @@ import {
   PHONE_E164,
   PRODUCTS,
   QUANTITIES,
-  WEBSITE,
   wa,
 } from '@/lib/site'
 import { Callback } from './Callback'
@@ -178,10 +177,10 @@ export function Contact() {
               </Detail>
               <Detail icon={<Globe size={20} />} label="Official E-mail">
                 <a
-                  href={`mailto:${WEBSITE}`}
+                  href="mailto:ramesh@rameshwerenterprises.com"
                   className="hover:text-terra transition-colors sm:text-[14.5px] sm:whitespace-nowrap xl:text-[15.5px]"
                 >
-                  {WEBSITE}
+                  ramesh@rameshwerenterprises.com
                 </a>
               </Detail>
             </motion.div>
