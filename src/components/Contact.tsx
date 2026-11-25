@@ -178,9 +178,7 @@ export function Contact() {
               </Detail>
               <Detail icon={<Globe size={20} />} label="Official E-mail">
                 <a
-                  href={`https://${WEBSITE}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`mailto:${WEBSITE}`}
                   className="hover:text-terra transition-colors sm:text-[14.5px] sm:whitespace-nowrap xl:text-[15.5px]"
                 >
                   {WEBSITE}
