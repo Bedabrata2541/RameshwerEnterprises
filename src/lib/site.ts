@@ -20,7 +20,7 @@ import veneerInt from '@/assets/img/veneer-int.jpg'
 export const COMPANY = 'Rameshwer Enterprises'
 export const PHONE_E164 = '919310018074'
 export const PHONE_DISPLAY = '+91 93100 18074'
-export const WEBSITE = 'www.rameshwerenterprises.in'
+export const WEBSITE = 'ramesh@rameshwerenterprises.com'
 export const ADDRESS = 'Nangloi, New Delhi, India'
 
 // Google Apps Script Web App URL that appends callback requests to the Google Sheet.

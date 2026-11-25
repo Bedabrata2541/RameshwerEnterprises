@@ -146,7 +146,7 @@ export function Contact() {
               transition={{ duration: 0.8, ease }}
             >
               <span className="text-terra text-[12px] font-bold tracking-[0.2em] uppercase">Contact & Showroom</span>
-              <h2 className="mt-3 text-[32px] leading-[1.05] font-extrabold sm:text-[44px]">Visit our Nangloi outlet or message us directly.</h2>
+              <h2 className="mt-3 text-[32px] leading-[1.05] font-extrabold sm:text-[44px]">Visit our outlet or message us directly.</h2>
               <div className="border-hair bg-sand mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[13px] font-semibold text-walnut">
                 <span className="bg-ink grid size-6 place-items-center rounded-full text-[9px] font-black text-white">BNI</span>
                 Proud BNI Member
@@ -170,7 +170,7 @@ export function Contact() {
                   {PHONE_DISPLAY}
                 </a>
               </Detail>
-              <Detail icon={<Globe size={20} />} label="Official Website">
+              <Detail icon={<Globe size={20} />} label="Official E-mail">
                 <a href={`https://${WEBSITE}`} target="_blank" rel="noopener noreferrer" className="hover:text-terra transition-colors">
                   {WEBSITE}
                 </a>
