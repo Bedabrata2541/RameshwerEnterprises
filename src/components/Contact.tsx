@@ -148,13 +148,12 @@ export function Contact() {
             >
               <span className="text-terra text-[12px] font-bold tracking-[0.2em] uppercase">Contact & Showroom</span>
               <h2 className="mt-3 text-[32px] leading-[1.05] font-extrabold sm:text-[44px]">Visit our outlet or message us directly.</h2>
-              <div className="border-hair bg-sand mt-6 inline-flex items-center gap-3 rounded-full border py-1.5 pr-4 pl-2.5 text-[13.5px] font-semibold text-walnut">
+              <div className="border-hair bg-sand mt-6 inline-flex items-center gap-3.5 rounded-full border py-2 pr-5 pl-3 text-[15px] font-semibold text-walnut">
                 <img
                   src={bniLogo}
-                  alt=""
-                  aria-hidden="true"
+                  alt="BNI Logo"
                   draggable={false}
-                  className="h-8 w-auto shrink-0 select-none"
+                  className="h-12 w-auto shrink-0 select-none sm:h-14"
                 />
                 <span>Proud BNI Member</span>
               </div>
