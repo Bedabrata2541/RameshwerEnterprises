@@ -20,13 +20,13 @@ import veneerInt from '@/assets/img/veneer-int.jpg'
 export const COMPANY = 'Rameshwer Enterprises'
 export const PHONE_E164 = '919310018074'
 export const PHONE_DISPLAY = '+91 93100 18074'
-export const WEBSITE = 'ramesh@rameshwerenterprises.com'
+export const WEBSITE = 'www.rameshwerenterprises.in'
 export const ADDRESS = 'Nangloi, New Delhi, India'
 
 // Google Apps Script Web App URL that appends callback requests to the Google Sheet.
 // See google-apps-script/callback.gs for setup. Leave empty to fall back to WhatsApp.
 export const CALLBACK_SHEET_URL =
-  'https://script.google.com/macros/s/AKfycbwF1NWLCRGd2_08y9zikwbOTdkTC2P14-HrB3DjVT7Kf44AXBCQCda4fejSNP384hUiXg/exec'
+  'https://script.google.com/macros/s/AKfycbyOGVWulmlhku4sTPFHOWvKecs5JEYbNISokiZIZ075bweveiQ73rF01QRVHTixgYlzQA/exec'
 
 export const DEFAULT_WA_URL =
   'https://wa.me/919310018074?text=Hello%20Rameshwer%20Enterprises%2C%20I%20would%20like%20to%20inquire%20about%20wholesale%20board%20rates.'
