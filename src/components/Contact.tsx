@@ -139,7 +139,7 @@ export function Contact() {
           </motion.div>
 
           {/* Company details */}
-          <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
+          <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1.55fr] lg:items-start">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -177,7 +177,12 @@ export function Contact() {
                 </a>
               </Detail>
               <Detail icon={<Globe size={20} />} label="Official E-mail">
-                <a href={`https://${WEBSITE}`} target="_blank" rel="noopener noreferrer" className="hover:text-terra transition-colors">
+                <a
+                  href={`https://${WEBSITE}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-terra transition-colors sm:text-[14.5px] sm:whitespace-nowrap xl:text-[15.5px]"
+                >
                   {WEBSITE}
                 </a>
               </Detail>
