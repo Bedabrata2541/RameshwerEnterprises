@@ -11,7 +11,6 @@ import {
 } from '@/lib/site'
 import { Callback } from './Callback'
 import { Footer } from './Footer'
-import bniLogo from '@/assets/img/image.png'
 import { Chevron, Globe, MapPin, Phone, User, WhatsAppIcon } from './Icons'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -148,12 +147,25 @@ export function Contact() {
             >
               <span className="text-terra text-[12px] font-bold tracking-[0.2em] uppercase">Contact & Showroom</span>
               <h2 className="mt-3 text-[32px] leading-[1.05] font-extrabold sm:text-[44px]">Visit our outlet or message us directly.</h2>
-              <img
-                src={bniLogo}
-                alt="Proud BNI Member"
-                draggable={false}
-                className="mt-6 h-12 w-auto select-none sm:h-14"
-              />
+              <div className="border-hair bg-sand mt-6 inline-flex items-center gap-3 rounded-full border py-1.5 pr-4 pl-2 text-[13.5px] font-semibold text-walnut">
+                <svg viewBox="0 0 120 74" aria-hidden="true" className="h-8 w-auto shrink-0">
+                  <ellipse cx="60" cy="37" rx="59" ry="36" fill="#CE1126" />
+                  <ellipse cx="60" cy="37" rx="53" ry="31" fill="none" stroke="#FFFFFF" strokeWidth="2.5" />
+                  <text
+                    x="60"
+                    y="47"
+                    textAnchor="middle"
+                    fill="#FFFFFF"
+                    fontFamily="system-ui, -apple-system, sans-serif"
+                    fontWeight="900"
+                    fontSize="31"
+                    letterSpacing="-0.5"
+                  >
+                    BNI
+                  </text>
+                </svg>
+                <span>Proud BNI Member</span>
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
